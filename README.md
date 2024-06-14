@@ -80,7 +80,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 ---
 
-Thank you for using the AP Calculus & SAT Math Success website! I hope you find the resources helpful in your academic journey.
+Thank you for using the MathAceHub website! I hope you find the resources helpful in your academic journey.
 
 ---
 
