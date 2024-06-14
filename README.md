@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to the AP Calculus & SAT Math Success website project. This website is designed to provide students with valuable resources, tips, and strategies to excel in AP Calculus, SAT Math, the USA Computing Olympiad (USACO), and the American Mathematics Competitions (AMC). The website features a variety of sections, including detailed guides, blog posts, and useful links to help students succeed in their academic endeavors.
+Welcome to the MathAceHub website project. This website is designed to provide students with valuable resources, tips, and strategies to excel in AP Calculus, SAT Math, the USA Computing Olympiad (USACO), and the American Mathematics Competitions (AMC). The website features a variety of sections, including detailed guides, blog posts, and useful links to help students succeed in their academic endeavors.
 
 ## Project Structure
 
