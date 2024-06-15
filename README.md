@@ -1,4 +1,4 @@
-# AP Calculus & SAT Math Success - README
+# MathAceHub - README
 
 ## Overview
 
