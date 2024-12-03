@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+\newtheorem{answer}{Answer}
+\newtheorem{solution}{Solution}
+
+\title{Weekly Homework 1}
+\author{Math Gecs}
+\date{December 19, 2023}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Exercise 1}
+Define the double factorial via $(2n-1)!!=(2n-1)(2n-3) \cdot \cdot \cdot 1$. Compute the unique pair $(a,c)$ with $c > 0$ and $a \in (0,\infty)$ such that\\
+
+\[
+\lim_{n \to \infty} \frac{c^n (4n - 1)!!}{(2n - 1)!! (2n - 1)!!} = a.
+\]\\
+
+Source: Stanford Mathematics Competition (2023 - Problem 10)
+
+\begin{answer} \left( \frac{\sqrt{2}}{2}, \frac{1}{4} \right)
+\end{answer}
+
+
+\begin{solution}
+
+We claim that \( (a, c) = \left( \frac{\sqrt{2}}{2}, \frac{1}{4} \right) \) is the answer.
+
+First, rewrite
+\[
+P_n = \frac{(4n - 1)!!}{(2n - 1)!! (2n - 1)!!} = \prod_{k=1}^n \frac{(4k - 1)(4k - 3)}{(2k - 1)^2}
+\]
+and as \( (4k - 1)(4k - 3) \leq 4(2k - 1)^2 = (2k - 1)(4k - 2) \), it follows that \( P_n \leq 4^n \), so if \( c < \frac{1}{4} \), the value of this limit would be 0.
+
+From the other end, we claim that \( P_n \geq \left( \frac{1}{2} + \frac{1}{4n} \right) 4^n \), implying that indeed \( c = \frac{1}{4} \).
+
+To do so, we proceed by induction. Note that \( P_1 = 3 \) which satisfies the hypothesis. Now, note that
+\[
+P_{n+1} = P_n \cdot \frac{(4n + 3)(4n + 1)}{(2n + 1)^2} = 4P_n \cdot \left(1 - \frac{1}{(4n + 2)^2}\right) \geq 4P_n \cdot \left(\frac{1}{2} + \frac{1}{4n}\right) \cdot \left(1 - \frac{1}{(4n + 2)^2}\right) 4^{n+1}
+\]
+and
+\[
+\left(\frac{1}{2} + \frac{1}{4n}\right) \left(1 - \frac{1}{(4n + 2)^2}\right) = \frac{1}{2} + \frac{1}{4n} - \frac{1}{2(4n + 2)^2} - \frac{1}{4n(4n + 2)^2}
+\]
+\[
+= \frac{1}{2} + \frac{1}{4n} - \frac{3}{16n} + \frac{1}{16n + 8}
+\]
+\[
+\geq \frac{1}{2} + \frac{16n + 16}{4(4n + 1)}
+\]
+so our induction is complete.
+
+Finally, we show that \( Q_n = P_n 4^{-n} \to \frac{\sqrt{2}}{2} \). To do so, consider writing
+\[
+Q(z) = \prod_{n=0}^\infty \left(1 - \frac{z^2}{\pi^2 (n + \frac{1}{2})^2}\right) = \prod_{n=0}^\infty \left(1 - \frac{z}{\pi(n + \frac{1}{2})}\right)\left(1 + \frac{z}{\pi(n + \frac{1}{2})}\right)
+\]
+and note that our desired answer is \( Q\left(\frac{\pi}{4}\right) \).
+
+Our (surprising) claim is that in fact \( Q(z) = \cos(z) \): writing \( \cos(z) \) as a Taylor series gives that it is a polynomial with first coefficient 1, and the zeros of \( Q(z) \) are exactly those of \( \cos(z) \) (with the same multiplicities, as \( \cos(z) \) and \( \cos(z)' = \sin(z) \) share no zeros). To show formal convergence, we appeal to the Weierstrass Factorization Theorem, which guarantees such a representation (maybe insert a more formal convergence statement).
+
+Now, we have \( Q\left(\frac{\pi}{4}\right) = \cos\left(\frac{\pi}{4}\right) = \frac{\sqrt{2}}{2} \) and we are done.
+\end{solution}
+
+
+
+\begin{solution}
+Note that \( (4n - 1)!! = \frac{(4n)!}{(4n)!} = \frac{(4n)!}{(2n)! 2^{2n}} \) and similarly \( (2n - 1)!! = \frac{(2n)!}{n! 2^n} \). So, we can rewrite
+
+\[
+\frac{(4n - 1)!!}{(2n - 1)!!(2n - 1)!!} = \frac{(4n)!}{(2n)!(2n)!}
+\]
+
+Define \( f(n) \sim g(n) \) if \( \lim_{n \to \infty} \frac{f(n)}{g(n)} = 1 \). Then, we claim that
+\[
+\binom{2n}{n} \sim \frac{2^{2n}}{\sqrt{\pi n}}
+\]
+Indeed, by Stirling's Approximation,
+\[
+\binom{2n}{n} \sim \frac{\sqrt{4 \pi n} \left(\frac{2n}{e}\right)^{2n}}{(\sqrt{2 \pi n}\left(\frac{n}{e}\right)^n)^2} = \frac{2^{2n}}{\sqrt{\pi n}}
+\]
+Hence,
+\[
+\frac{\binom{4n}{2n}}{\binom{2n}{n}} \sim \frac{\frac{2^{4n}}{\sqrt{2 \pi n}}}{\frac{2^{2n}}{\sqrt{\pi n}}} = \frac{4^n}{\sqrt{2}}
+\]
+This immediately implies \( (a, c) = \left( \frac{\sqrt{2}}{2}, \frac{1}{4} \right) \).
+
+\end{solution}
+
+
+
+
+\vspace{2in}
+
+
+
+\subsection*{Exercise 2}
+Find all positive integers $n$ such that $3_{n-1} + 5_{n-1}$ divides $3_n + 5_n$. \\
+
+Source: St.Petersburg 1996
+\begin{answer}
+$1$
+
+\end{answer}
+
+\begin{solution}
+\begin{enumerate}
+    
+
+This only occurs for $n = 1$. Let $s_n = 3^n + 5^n$ and note that \\
+
+$$s_n = (3+5)s_{n-1} - 3\cdot 5\cdot s_{n-2}$$\\
+So $s_{n-1}$ must also divide $3\cdot 5\cdot s_{n-2}$. \\
+If $n > 1$, then $s_{n-1}$ is coprime to 3 and 5, then $s_{n-1}$ must divide $s_{n-2}$, which is 
+\end{enumerate}
+impossible since $s_{n-1} > s_{n-2}$.
+
+
+\end{solution}
+
+\end{document}
