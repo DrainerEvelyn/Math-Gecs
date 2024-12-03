@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 9}
+\author{Math Gecs}
+\date{March 23, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+For what real values of $x$ is
+
+
+$$ \sqrt{x+\sqrt{2x-1}} + \sqrt{x-\sqrt{2x-1}} = A,$$
+
+given (a) $A=\sqrt{2}$, (b) $A=1$, (c) $A=2$, where only non-negative real numbers are admitted for square roots?
+\\ \\
+Source: 1959 IMO Problem 2\\
+
+\begin{answer*}
+$x= \frac{3}{2}$
+\end{answer*}
+
+\begin{solution*}
+The square roots imply that $x\ge \frac{1}{2}$.
+
+Square both sides of the given equation: $$A^2 = \Big( x + \sqrt{2x - 1}\Big) + 2 \sqrt{x + \sqrt{2x - 1}}  \sqrt{x - \sqrt{2x - 1}} +  \Big( x - \sqrt{2x - 1}\Big) $$
+
+Add the first and the last terms to get:
+$$A^2 = 2x + 2 \sqrt{x + \sqrt{2x - 1}}  \sqrt{x - \sqrt{2x - 1}}$$
+
+Multiply the middle terms, and use $(a + b)(a - b) = a^2 - b^2$ to get:
+$$A^2 = 2x + 2 \sqrt{x^2 - 2x + 1}$$
+
+Since the term inside the square root is a perfect square, and by factoring 2 out, we get
+$$A^2 = 2(x + \sqrt{(x-1)^2})$$
+Use the property that $\sqrt{x^2}=|x|$ to get
+$$A^2 = 2(x+|x-1|)$$
+
+\textbf{Case I:} If $x \le 1$, then $|x-1| = 1 - x$, and the equation reduces to $A^2 = 2$. This is precisely part (a) of the question, for which the valid interval is now $x \in \left[ \frac{1}{2}, 1 \right]$
+\\ \\
+\textbf{Case II:} If $x > 1$, then $|x-1| = x - 1$ and we have
+$$x = \frac{A^2 + 2}{4} > 1$$
+which simplifies to 
+$$A^2 > 2 $$
+
+This tells there that there is no solution for (b), since we must have $A^2 \ge 2$
+
+For (c), we have $A = 2$, which means that $A^2 = 4$, so the only solution is $ x=\frac{3}{2}$.
+\end{solution*}
+$$$$
+\begin{solution*}
+Note that the equation can be rewritten to 
+$$\sqrt{(\sqrt{2x-1}+1)^2} + \sqrt{(\sqrt{2x-1}-1)^2}=A\sqrt{2}$$
+i.e., $\sqrt{2x-1}+1 + |\sqrt{2x-1}-1|=A\sqrt{2}$. 
+\\ \\
+\textbf{Case I:} when $2x-1\ge 1$ (i.e., $x\ge 1$), the equation becomes $2\sqrt{2x-1}=\sqrt{2}A$. For (a), we have $x=1$; for (b) we have $x=\frac{3}{4}$; for (c) we have $x=\frac{3}{2}$. Since $x\ge 1$, (b) $x=\frac{3}{4}$ is not what we want.
+\\ \\
+\textbf{Case II:} when $0\le 2x-1 <1$ (i.e., $1/2\le x <1$), the equation becomes $2=\sqrt{2}A$, which only works for (a) $A=\sqrt{2}$. 
+\\ \\
+In summary, any $x \in \left[\frac{1}{2}, 1\right]$ is a solution for (a); there is no solution for (b); there is one solution for (c), which is $x=\frac{3}{2}$. 
+\end{solution*}
+
+\vspace{3.1in}
+
+
+
+
+
+
+\subsection*{Exercise 2}
+Let $\{a_n \}_{n\ge 0}$ be a non-decreasing, unbounded sequence of non-negative integers with $a_0=0$.  Let the number of members of the sequence not exceeding $n$ be $b_n$.  Prove that for all positive integers $m$ and $n$, we have
+$$ a_0 + a_1 + \dotsb + a_m + b_0 + b_1 + \dotsb + b_n \ge (m+1)(n+1) . $$\\
+
+Source: 1999 BMO Problem 4\\
+
+$$$$
+
+
+\begin{proof}
+Note that for arbitrary nonnegative integers $i,j$, the relation $j \le a_i$ is equivalent to the relation $i \ge b_{j-1}$.  It then follows that
+$$ \sum_{i=0}^m a_i = \sum_{i=0}^m \sum_{j=1}^{a_i} 1 = \sum_{j=1}^{a_m} \sum_{i=b_{j-1}}^m 1 = \sum_{j=1}^{a_m} ( m+1 - b_{j-1} ) = \sum_{j=0}^{a_m-1} (m+1 - b_j ) . $$
+Note that if $j \le a_m-1$, then there are at most $m$ terms of $\{ a_k\}_{k\ge 0}$ which do not exceed $j$, i.e., $b_j \le m$; it follows that every term of the last summation is positive.
+
+Now, if $a_m \ge n+1$, then we have
+$$ \begin{align*}
+\sum_{i=0}^m a_i + \sum_{j=0}^n b_j &= \sum_{j=n+1}^{a_m-1}(m+1 - b_j) + \sum_{j=0}^n (m+1 - b_j + b_j) \\
+&= \sum_{j=n+1}^{a_m-1}(m+1-b_j) + (n+1)(m+1) \ge (n+1)(m+1),
+\end{align*} $$
+as desired.  On the other hand, if $a_m < n+1$, then for all $j\ge a_m$, $b_j \ge m+1$.  It then follows that
+$$ \begin{align*}
+ \sum_{i=0}^m a_j + \sum_{j=0}^n b_j &= \sum_{j=0}^{a_m-1}(m+1 - b_j + b_j) + \sum_{j=a_m}^n b_j \\
+&= (a_m)(m+1) + \sum_{j=a_m}^n b_j \\
+&\ge (a_m)(m+1) + (n+1-a_m)(m+1) = (n+1)(m+1),
+\end{align*} $$
+as desired.  Therefore the problem statement is true in all cases.
+
+\end{proof}
+
+
+\end{document}

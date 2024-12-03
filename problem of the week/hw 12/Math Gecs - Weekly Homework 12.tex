@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 12}
+\author{Math Gecs}
+\date{April 14, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Let $(x,y,z)$ be an ordered triplet of real numbers that satisfies the following system of equations: 
+$$\begin{align*}x+y^2+z^4&=0,\\y+z^2+x^4&=0,\\z+x^2+y^4&=0.\end{align*}$$
+If $m$ is the minimum possible value of $\lfloor x^3+y^3+z^3\rfloor$, find the modulo $2007$ residue of $m$.
+\\
+
+Source: 2007 iTest Problem 46\\
+
+\begin{answer*}
+$\boxed{2006}$
+\end{answer*}
+
+\begin{solution*}
+Rearrange the terms to get
+$$y^2 + z^4 = -x$$
+$$z^2 + x^4 = -y$$
+$$x^2 + y^4 = -z$$
+Since the left hand side of all three equations is greater than or equal to 0, $x,y,z \le 0$.  Also, note that the equations have symmetry, so \href{https://artofproblemsolving.com/wiki/index.php/WLOG}{WLOG}, let $0 \ge x \ge y \ge z$.  By substitution, we have
+
+$$y^2 + z^4 \le z^2 + x^4 \le x^2 + y^4$$
+
+Note that $0 \le x^2 \le y^2 \le z^2$ and $0 \le x^4 \le y^4 \le z^4$. That means $x^2 + y^4 \le x^2 + z^4$.  Since $y^2 + z^4 \le x^2 + y^4$,
+$$y^2 + z^4 \le x^2 + z^4$$
+$$y^2 \le x^2$$
+Since $x^2 \le y^2$, then $x^2 = y^2$.  Because $x$ and $y$ are nonpositive, $x = y$.
+
+
+Using substitution in the original system,
+$$x^2 + z^4 = z^2 + x^4$$
+$$(z^2 + x^2)(z^2 - x^2) - (z^2 - x^2) = 0$$
+$$(z^2 - x^2)(x^2 + z^2 - 1) = 0$$
+To find the real solutions, we use \href{https://artofproblemsolving.com/wiki/index.php/Casework}{casework} and the Zero Product Property.
+
+Case 1: $z^2 = x^2$
+
+If $z^2 = x^2$, then since $z$ and $x$ are nonpositive, then $z = x$.  Substitution results in
+$$x+x^2+x^4 = 0$$
+$$x(1+x+x^3) = 0$$
+That means $x = 0$ or $x^3 + x + 1 = 0$.  For the first equation, $m = 0$.  For the second equation, note that $x^3 = -x-1$, and since $x = y = z$, $m = \lfloor -3x-3 \rfloor$, where $x$ is a real number.  Since $-\tfrac{1}{3}^3 - \tfrac13 + 1 = \tfrac{16}{27}$ and $-\tfrac{2}{3}^3 - \tfrac23 + 1 = \tfrac{1}{27}$, the root of $x$ is less than $-\tfrac23$ but more than $-1$, so
+$$0 > -3x-3 > -1$$
+$$m = \lfloor -3x-3 \rfloor = -1$$
+
+Case 2: $x^2 + z^2 = 1$
+
+Because $x^2 \le z^2$, $x^2 \le \frac12$.  From one of the original equations,
+$$z^2 + x^4 = -y$$
+$$1 - x^2 + x^4 + x = 0$$
+Using the \href{https://artofproblemsolving.com/wiki/index.php/Rational_Root_Theorem}{Rational Root Theorem},
+$$(x+1)(x^3 - x^2 + 1) = 0$$
+Note that if $x = -1$, then $x^2 \ge \tfrac12$, so that won’t work.  Let $x = -a$ (where $a \ge 0$ since $x \le 0$), so 
+$$a^3 + a^2 = 1$$
+If $a \le \tfrac{\sqrt2}{2}$, then
+$$a^3 + a^2 \le \frac{\sqrt2}{4} + \frac12$$
+$$a^3 + a^2 \le \frac{\sqrt2 + 2}{4} < 1$$
+Thus, there are no solutions in this case.
+
+
+From the two cases, the smallest possible value of $m$ is $-1$, so the \href{https://artofproblemsolving.com/wiki/index.php/Modulo}{modulo} $2007$ residue of $m$ is $\boxed{2006}$.
+\end{solution*}
+
+
+
+
+
+\subsection*{Exercise 2}
+Determine all pairs of distinct real numbers $(x, y)$ such that both of the following are true:
+
+$$\begin{align*}
+x^{100} - y^{100} &= 2^{99} (x-y) \\
+x^{200} - y^{200} &= 2^{199} (x-y)
+\end{align*}$$
+
+Source: 2017 Indonesia MO Problem 4\\
+
+\begin{answer*}
+$\boxed{(0,2),(2,0)}.$
+\end{answer*}
+
+\begin{solution*}
+Let $x = 2a$ and $y = 2b,$ resulting in the below system.
+$$\begin{align*}
+a^{100} - b^{100} &= a-b \\
+a^{200} - b^{200} &= a-b
+\end{align*}$$
+Substitution and factoring of difference of squares results in
+$$\begin{align*}
+a^{100} - b^{100} &= a^{200} - b^{200} \\
+a^{100} - b^{100} &= (a^{100} - b^{100})(a^{100} + b^{100}) \\
+0 &= (a^{100} - b^{100})(a^{100} + b^{100} - 1)
+\end{align*}$$
+By the \href{https://artofproblemsolving.com/wiki/index.php/Zero_Product_Property}{[Zero Product Property}, either $a^{100} = b^{100}$ or $a^{100} + b^{100} = 1.$  If $a^{100} = b^{100}$ and $a \ne b,$ then $a = -b.$  However, a quick check reveals this to be an extraneous solution.
+
+\\$ \\$
+
+Thus, $a^{100} + b^{100} = 1.$  If $a = 0,$ then $b = 1,$ and if $b=0,$ then $a=1.$  Now assume $|a|, |b| < 1.$  Because $a^{100} - a = b^{100} - b,$ we have $\frac{a}{b} = \frac{b^{99} - 1}{a^{99} - 1}.$  Since $\frac{b^{99} - 1}{a^{99} - 1}$ is positive, $a$ and $b$ must have the same sign.
+
+$$$$
+
+Note that $\frac{a^{100} - b^{100}}{a-b} = 1 = \sum_{i=0}^{99} a^i b^{99-i}.$  If $a,b$ are negative, then the sum is negative since each term is negative, so $a,b$ must both be positive.  That means $a^{99} + b^{99} < 1,$ so
+$$\begin{align*}
+a^{99} + b^{99} &< a^{100} + b^{100} \\
+a^{99} + b^{99} &< a \cdot a^{99} + b \cdot b^{99}.
+\end{align*}$$
+Since $a,b < 1,$ we have $a^{99} + b^{99} < a^{99} + b^{99}.$  However, that can not happen, so there are no more solutions.
+
+$$$$
+This means that the only solutions are $\boxed{(0,2),(2,0)}.$
+
+\end{solution*}
+
+
+\end{document}

@@ -1,0 +1,197 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 14}
+\author{Math Gecs}
+\date{April 30, 2024}
+
+\begin{document}
+\maketitle
+
+\section*{happy bday to me. holy shit im 18 rn}
+
+\subsection*{Exercise 1}
+Find the largest real number $C$ such that for any positive integer $n$ and any real numbers $x_1, x_2, \ldots, x_n$, the following inequality holds:
+$$
+\sum_{i=1}^n \sum_{j=1}^n(n-|j-i|) x_i x_j \geq C \sum_{i=1}^n x_i^2
+$$
+\\
+
+Source: 2023 CMO(CHINA) Problem 2\\
+
+\begin{solution*}
+Define the $n \times n$ matrix $A_n$ as follows:
+$$
+A_n=\left(\begin{array}{cccccc}
+n & n-1 & n-2 & \cdots & 2 & 1 \\
+1 & n & n-1 & \cdots & 3 & 2 \\
+2 & 1 & n & \cdots & 4 & 3 \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+n-2 & n-3 & n-4 & \cdots & n & n-1 \\
+n-1 & n-2 & n-3 & \cdots & 1 & n
+\end{array}\right)
+$$
+
+The problem simplifies to finding the smallest real number $C$ such that for all $n \in \mathbb{N}^*$ and any vector $x \in \mathbb{R}^n$, the following inequality holds:
+$$
+x^T A_n x \geq C x^T x
+$$
+
+In other words, find the real number $C$ such that:
+$$
+C \leq \inf _{n \in \mathbb{N}^*} \inf _{\substack{x \in \mathbb{R}^n \\ x \neq 0}} \frac{x^T A_n x}{x^T x}
+$$
+Given that $A_n$ is not easily invertible directly, but is invertible (as it is a sparse matrix):
+$$
+A_n^{-1}=\left(\begin{array}{cccccc}
+\frac{n+2}{2 n+2} & \frac{1}{2} & 0 & \cdots & 0 & \frac{1}{2 n+2} \\
+-\frac{1}{2} & 1 & \frac{1}{2} & \cdots & 0 & 0 \\
+0 & -\frac{1}{2} & 1 & \frac{1}{2} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \ddots & \ddots & \vdots \\
+0 & 0 & \cdots & -\frac{1}{2} & 1 & \frac{1}{2} \\
+\frac{1}{2 n+2} & 0 & \cdots & 0 & -\frac{1}{2} & \frac{n+2}{2 n+2}
+\end{array}\right)
+$$
+
+Since the inverse has non-zero entries:
+$$
+\inf _{\substack{x \in \mathbb{R}^n \\ x \neq 0}} \frac{x^T A_n x}{x^T x}=\left(\sup _{\substack{x \in \mathbb{R}^n \\ x \neq 0}} \frac{x^T A_n^{-1} x}{x^T x}\right)^{-1}
+$$
+
+For the eigenvalues $\mu$ of $A_n$ :
+$$
+\frac{1}{2}+\frac{1}{2 n+2} \leq \mu-1 \leq \frac{1}{2}+\frac{1}{2 n+2}
+$$
+
+Thus:
+$$
+0 \leq \mu \leq 2
+$$
+Given that $A_n^{-1}$ is invertible, $\mu \neq 0$, therefore:
+$$
+\begin{gathered}
+0<\mu \leq 2 \\
+\sup _{\substack{x \in \mathbb{R}^n \\
+x \neq 0}} \frac{x^T A_n^{-1} x}{x^T x} \leq 2
+\end{gathered}
+$$
+
+For a specific $y \in \mathbb{R}^n, y=[1,-1,1,-1, \ldots]^T \in \mathbb{R}^n$, we have:
+$$
+\begin{gathered}
+y^T y=n \\
+y^T A_n^{-1} y= \begin{cases}2(n-2)+\frac{2(n+2)}{n+1} & \text { if } n \text { is even } \\
+2(n-1) & \text { if } n \text { is odd }\end{cases} \\
+\sup _n \sup _{\substack{x \in \mathbb{R}^n \\
+x \neq 0}} \frac{x^T A_n x}{x^T x} \geq \sup _n \frac{y^T A_n y}{y^T y} \geq 2
+\end{gathered}
+$$
+
+In conclusion:
+$$
+\inf _{\substack{x \in \mathbb{R}^n \\ x \neq 0}} \frac{x^T A_n x}{x^T x}=\inf _n\left(\sup _{\substack{x \in \mathbb{R}^n \\ x \neq 0}} \frac{x^T A_n^{-1} x}{x^T x}\right)^{-1}=\left(\sup _{\substack{n \\ n \in \mathbb{R}^n \\ x \neq 0}} \frac{x^T A_n^{-1} x}{x^T x}\right)^{-1}=\frac{1}{2}
+$$
+
+Therefore, the maximum value of the real number $C$ is $\frac{1}{2}$.
+
+\end{solution*}
+
+
+
+
+
+
+\subsection*{Exercise 2}
+Let $\mathbb{Z}$ be the set of integers. Find all functions $f : \mathbb{Z} \rightarrow \mathbb{Z}$ such that $$xf(2f(y)-x)+y^2f(2x-f(y))=\frac{f(x)^2}{x}+f(yf(y))$$ for all $x, y \in \mathbb{Z}$ with $x \neq 0$.
+\\
+
+Source: 2014 USAMO Problem 2\\
+
+\begin{answer*}
+$\boxed{f(x)=0}$ and $\boxed{f(x)=x^2}$
+\end{answer*}
+
+\begin{solution*}
+Lemma 1: $f(0) = 0$.
+Proof: Assume the opposite for a contradiction. Plug in $x = 2f(0)$ (because we assumed that $f(0) \neq 0$), $y = 0$. What you get eventually reduces to:
+$$4f(0)-2 = \left( \frac{f(2f(0))}{f(0)} \right)^2$$
+which is a contradiction since the LHS is divisible by 2 but not 4.
+
+Then plug in $y = 0$ into the original equation and simplify by Lemma 1. We get:
+$$x^2f(-x) = f(x)^2$$
+Then:
+
+$$\begin{align*}
+x^6f(x) &= x^4\bigl(x^2f(x)\bigr)\\
+&= x^4\bigl((-x)^2f(-(-x))\bigr)\\
+&= x^4(-x)^2f(-(-x))\\
+&= x^4f(-x)^2\\
+&= f(x)^4
+\end{align*}$$
+
+Therefore, $f(x)$ must be 0 or $x^2$.
+
+Now either $f(x)$ is $x^2$ for all $x$ or there exists $a \neq 0$ such that $f(a)=0$. The first case gives a valid solution. In the second case, we let $y = a$ in the original equation and simplify to get:
+$$xf(-x) + a^2f(2x) = \frac{f(x)^2}{x}$$
+But we know that $xf(-x) = \frac{f(x)^2}{x}$, so:
+$$a^2f(2x) = 0$$
+Since $a$ is not 0, $f(2x)$ is 0 for all $x$ (including 0). Now either $f(x)$ is 0 for all $x$, or there exists some $m \neq 0$ such that $f(m) = m^2$. Then $m$ must be odd. We can let $x = 2k$ in the original equation, and since $f(2x)$ is 0 for all $x$, stuff cancels and we get:
+$$y^2f(4k - f(y)) = f(yf(y))$$
+<b>for $\mathbf{k \neq 0}$.</b>
+Now, let $y = m$ and we get:
+$$m^2f(4k - m^2) = f(m^3)$$
+Now, either both sides are 0 or both are equal to $m^6$. If both are $m^6$ then:
+$$m^2(4k - m^2)^2 = m^6$$
+which simplifies to:
+$$4k - m^2 = \pm m^2$$
+Since $k \neq 0$ and $m$ is odd, both cases are impossible, so we must have:
+$$m^2f(4k - m^2) = f(m^3) = 0$$
+Then we can let $k$ be anything except 0, and get $f(x)$ is 0 for all $x \equiv 3 \pmod{4}$ except $-m^2$.  Also since $x^2f(-x) = f(x)^2$, we have $f(x) = 0 \Rightarrow f(-x) = 0$, so $f(x)$ is 0 for all $x \equiv 1 \pmod{4}$ except $m^2$. So $f(x)$ is 0 for all $x$ except $\pm m^2$. Since $f(m) \neq 0$, $m = \pm m^2$. Squaring, $m^2 = m^4$ and dividing by $m$, $m = m^3$. Since $f(m^3) = 0$, $f(m) = 0$, which is a contradiction for $m \neq 1$. However, if we plug in $x = 1$ with $f(1) = 1$ and $y$ as an arbitrary large number with $f(y) = 0$ into the original equation, we get $0 = 1$ which is a clear contradiction, so our only solutions are $f(x) = 0$ and $f(x) = x^2$.
+
+\end{solution*}
+$$$$
+\begin{solution*}
+    Given that the range of f consists entirely of integers, it is clear that the LHS must be an integer and $f(yf(y))$ must also be an integer, therefore $\frac{f(x)^2}{x}$ is an integer. If $x$ divides $f(x)^2$ for all integers $x \ne 0$, then $x$ must be a factor of $f(x)$, therefore $f(0)=0$. Now, by setting $y=0$ in the original equation, this simplifies to $xf(-x)=\frac{f(x)^2}{x}$. Assuming $x \ne 0$, we have $x^2f(-x)=f(x)^2$. Substituting in $-x$ for $x$ gives us $x^2f(x)=f(-x)^2$. Substituting in $\frac{f(x)^2}{x^2}$ in for $f(-x)$ in the second equation gives us $x^2f(x)=\frac{f(x)^4}{x^4}$, so $x^6f(x)=f(x)^4$. In particular, if $f(x) \ne 0$, then we have $f(x)^3=x^6$, therefore $f(x)$ is equivalent to $0$ or $x^2$ for every integer $x$. Now, we shall prove that if for some integer $t \ne 0$, if $f(t)=0$, then $f(x)=0$ for all integers $x$. If we assume $f(y)=0$ and $y \ne 0$ in the original equation, this simplifies to $xf(-x)+y^2f(2x)=\frac{f(x)^2}{x}$. However, since $x^2f(-x)=f(x)^2$, we can rewrite this equation as $\frac{f(x)^2}{x}+y^2f(2x)=\frac{f(x)^2}{x}$, $y^2f(2x)$ must therefore be equivalent to $0$. Since, by our initial assumption, $y \ne 0$, this means that $f(2x)=0$, so, if for some integer $y \ne 0$, $f(y)=0$, then $f(x)=0$ for all integers $x$. The contrapositive must also be true, i.e. If $f(x) \ne 0$ for all integers $x$, then there is no integral value of $y \ne 0$ such that $f(y)=0$, therefore $f(x)$ must be equivalent for $x^2$ for every integer $x$, including $0$, since $f(0)=0$. Thus, $f(x)=0, x^2$ are the only possible solutions.
+
+\end{solution*}
+$$$$
+\begin{solution*}
+    Let's assume $f(0)\neq 0.$ Substitute $(x,y)=(2f(0),0)$ to get $$2f(0)^2=f(2f(0))^2/2f(0)+f(0)$$
+$$2f(0)^2(2f(0)-1)=f(2f(0))^2$$
+
+This means that $2(2f(0)-1)$ is a perfect square. However, this is impossible, as it is equivalent to $2\pmod{4}.$ Therefore, $f(0)=0.$ Now substitute $x\neq 0, y=0$ to get $$xf(-x)=\frac{f(x)^2}{x} \implies x^2f(-x)=f(x)^2.$$
+Similarly, $$x^2f(x)=f(-x)^2.$$
+From these two equations, we can find either $f(x)=f(-x)=0,$ or $f(x)=f(-x)=x^2.$ Both of these are valid solutions on their own, so let's see if there are any solutions combining the two. 
+
+Let's say we can find $f(x)=x^2, f(y)=0,$ and $x,y\neq 0.$ Then $$xf(-x)+y^2f(2x)=f(x)^2/x.$$
+$$y^2f(2x)=x-x^3.$$ (NEEDS FIXING: $f(x)^2/x= x^4/x = x^3$, so the RHS is $0$ instead of $x-x^3$.)
+
+If $f(2x)=4x^2,$ then $y^2=\frac{x-x^3}{4x^2}=\frac{1-x^2}{4x},$ which is only possible when $y=0.$ This contradicts our assumption. Therefore, $f(2x)=0.$ This forces $x=\pm 1$ due to the right side of the equation. Let's consider the possibility $f(2)=0, f(1)=1.$ Substituting $(x,y)=(2,1)$ into the original equation yields  $$0=2f(0)+1f(2)=0+f(1)=1,$$ which is impossible. So $f(2)=f(-2)=4$ and there are no solutions "combining" $f(x)=x^2$ and $f(x)=0.$
+
+Therefore our only solutions are $\boxed{f(x)=0}$ and $\boxed{f(x)=x^2.}$
+\end{solution*}
+$$$$
+\begin{solution*}
+    Let the given assertion be $P(x, y)$. We try $P(x, 0)$ and get $xf(2c-x)=f(x)^2/x+c$, where $f(0)=c$. We plug in $x=c$ and get $cf(c)=f(c)^2/c+c$. Rearranging and solving for $c^2$ gives us $c^2=\frac{f(c)^2}{f(c)-1}$. Obviously, the only $c$ that works such that the RHS is an integer is $c=0$, and thus $f(0)=0$.
+\\ \\
+We use this information on assertion $P(x,0)$ and obtain $xf(-x)=f(x^2)/x$, or $f(-x)=\frac{f(x)^2}{x^2}$. Thus, $f(x)$ is an even function. It follows that $f(x)=0, x^2$ for each $x$. We now prove that $f(x)=x^2$, f(x)=0$ are the only solutions.
+\end{solution*}
+
+\end{document}

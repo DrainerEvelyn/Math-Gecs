@@ -1,0 +1,92 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem{answer}{Answer}
+\newtheorem{solution}{Solution}
+
+\title{Weekly Homework 3}
+\author{Math Gecs}
+\date{January 14, 2024}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Exercise 1}
+For $t = 1, 2, 3, 4$, define $S_t = \sum_{i = 1}^{350}a_i^t$, where $a_i \in \{1,2,3,4\}$. If $S_1 = 513$ and $S_4 = 4745$, find the minimum possible value for $S_2$. \\
+
+Source: 2009 AIME I Problem 14
+
+\begin{answer}
+$905$
+\end{answer}
+
+
+\begin{solution}
+Because the order of the $a$'s doesn't matter, we simply need to find the number of $1$s $2$s $3$s and $4$s that minimize $S_2$. So let $w, x, y,$ and $z$ represent the number of $1$s, $2$s, $3$s, and $4$s respectively. Then we can write three equations based on these variables. Since there are a total of $350$ $a$s, we know that $w + x + y + z = 350$. We also know that $w + 2x + 3y + 4z = 513$ and $w + 16x + 81y + 256z = 4745$. We can now solve these down to two variables:
+$$w = 350 - x - y - z$$
+Substituting this into the second and third equations, we get
+$$x + 2y + 3z = 163$$
+and
+$$15x + 80y + 255z = 4395.$$
+The second of these can be reduced to 
+$$3x + 16y + 51z = 879.$$
+Now we substitute $x$ from the first new equation into the other new equation.
+$$x = 163 - 2y - 3z$$
+$$3(163 - 2y - 3z) + 16y + 51z = 879$$
+$$489 + 10y + 42z = 879$$
+$$5y + 21z = 195$$
+Since $y$ and $z$ are integers, the two solutions to this are $(y,z) = (39,0)$ or $(18,5)$.
+If you plug both these solutions in to $S_2$ it is apparent that the second one returns a smaller value. It turns out that $w = 215$, $x = 112$, $y = 18$, and $z = 5$, so $S_2 = 215 + 4*112 + 9*18 + 16*5 = 215 + 448 + 162 + 80 = \boxed{905}$.
+
+\end{solution}
+
+%\vspace{1in}
+
+
+
+\subsection*{Exercise 2}
+Let $(a,b,c)$ be a Pythagorean triple, ''i.e.'', a triplet of positive integers with ${a}^2+{b}^2={c}^2$.
+
+\begin{itemize}
+    \item Prove that $(c/a + c/b)^2 > 8$.
+    \item Prove that there does not exist any integer $n$ for which we can find a Pythagorean triple $(a,b,c)$ satisfying $(c/a + c/b)^2 = n$.
+\end{itemize}
+Source: 2005 Canadian MO Problem 2
+
+
+\subsubsection*{Proof:}
+\begin{itemize}
+    \item We have
+\end{itemize}
+
+\[
+$\left(\frac ca + \frac cb\right)^2 = \frac{c^2}{a^2} + 2\frac{c^2}{ab} + \frac{c^2}{b^2} = \frac{a^2 + b^2}{a^2} + 2\frac{a^2 + b^2}{ab} + \frac{a^2+b^2}{b^2} = 2 + \left(\frac{a^2}{b^2} + \frac{b^2}{a^2}\right) + 2\left(\frac ab + \frac ba\right)$
+\]
+By \href{https://artofproblemsolving.com/wiki/index.php/AM-GM_Inequality}{AM-GM}, we have 
+
+$$x + \frac 1x > 2,$$
+
+where $x$ is a positive real number not equal to one. If $a = b$, then $c \not\in \mathbb{Z}$. Thus $a \neq b$ and $\frac ab \neq 1\implies \frac{a^2}{b^2}\neq 1$. Therefore, 
+
+$$\left(\frac ca + \frac cb\right)^2 > 2 + 2 + 2(2) = 8.$$
+\begin{itemize}
+    \item Now since $a$, $b$, and $c$ are positive integers, $c/a + c/b$ is a rational number $p/q$, where $p$ and $q$ are positive integers. Now if $p^2/q^2=n$, where $n$ is an integer, then $p/q$ must also be an integer. Thus $c(a+b)/ab$ must be an integer.
+\end{itemize}
+Now every pythagorean triple can be written in the form $(2mn, m^2-n^2, m^2+n^2)$, with $m$ and $n$ positive integers. Thus one of $a$ or $b$ must be even. If $a$ and $b$ are both even, then $c$ is even too. Factors of 4 can be cancelled from the numerator and the denominator(since every time one of $a$, $b$, $c$, and $a+b$ increase by a factor of 2, they all increase by a factor of 2) repeatedly until one of $a$, $b$, or $c$ is odd, and we can continue from there. Thus the $m^2-n^2$ term is odd, and thus $c$ is odd. Now $c$ and $a+b$ are odd, and $ab$ is even. Thus $c(a+b)/ab$ is not an integer. Now we have reached a contradiction, and thus there does not exist any integer $n$ for which we can find a Pythagorean triple $(a,b,c)$ satisfying $(c/a + c/b)^2 = n$.
+
+\end{document}

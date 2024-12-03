@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\renewenvironment{proof}{{\bfseries Proof.}}{}
+
+\title{Weekly Homework 4}
+\author{Math Gecs}
+\date{January 27, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+(\textit{David Savitt})
+Let $n$ be a positive integer and let $S$ be a set of $2^n+1$ elements. Let $f $ be a function from the set of two-element subsets of $S $ to $\{0, \dots, 2^{n-1}-1\}$. Assume that for any elements $x, y, z$ of $S $, one of $f(\{x,y\}), f(\{y,z\}), f(\{z, x\}) $ is equal to the sum of the other two. Show that there exist $a, b, c $ in $S $ such that $f(\{a,b\}), f(\{b,c\}), f(\{c,a\}) $ are all equal to 0.\\
+
+Source: 2002 USA TST Problem 4\\
+
+
+
+\begin{proof}
+We will prove that for any integer $ 0 \le k \le n-1 $, there exists a set $ S_k \subseteq S $ of cardinality at least $2^{n-k} + 1 $ such that for any $ a, b \in S_k $, $ 2^k \mid f(\{a,b\}) $.
+
+Our base case is $S_0 = S $.  Now, asume that there exists such an $S_{k-1} $ ($1 \le k \le n$).  We will consider two elements $a, b $ of $S_{k-1} $ to be ''related'' if $a=b $, or if $f(\{a,b\}) $ is divisible by $2^k $.  Any two elements of $S_{k-1} $ which are related to some $ a \in S_{k-1} $ must also be related to each other; similarly, any two elements of $S_{k-1} $ which are not related to $a $ must be related to each other.  Thus the relation partitions $S_{k-1} $ into two [[equivalence class]]es; we pick the larger one, which must have at least $2^{n-k} + 1 $ elements, to be $S_k $.
+
+Thus there must exist an $S_{n-1} $ with at least three elements $a,b,c $ such that 
+$$ 2^{n-1} \mid f(\{a,b\}), f(\{b,c\}), f(\{c,a\}).$$ 
+
+But the only possible value of ${} f(\{x,y\}) $ which is divisible by $2^{n-1} $ is zero.
+\end{proof}
+
+\vspace{2in}
+
+
+
+
+
+
+\subsection*{Exercise 2}
+Let $n$ be a positive integer. Eric and a squid play a turn-based game on an infinite grid of unit squares. Eric's goal is to capture the squid by moving onto the same square as it.
+
+Initially, all the squares are colored white. The squid begins on an arbitrary square in the grid, and Eric chooses a different square to start on. On the squid's turn, it performs the following action exactly $2020$ times: it chooses an adjacent unit square that is white, moves onto it, and sprays the previous unit square either black or gray. Once the squid has performed this action $2020$ times, all squares colored gray are automatically colored white again, and the squid's turn ends. If the squid is ever unable to move, then Eric automatically wins. Moreover, the squid is claustrophobic, so at no point in time is it ever surrounded by a closed loop of black or gray squares. On Eric's turn, he performs the following action at most $n$ times: he chooses an adjacent unit square that is white and moves onto it. Note that the squid can trap Eric in a closed region, so that Eric can never win.
+
+Eric wins if he ever occupies the same square as the squid. Suppose the squid has the first turn, and both Eric and the squid play optimally. Both Eric and the squid always know each other's location and the colors of all the squares. Find all positive integers $n$ such that Eric can win in finitely many moves.\\
+
+Source: 2020 CAMO Problem 6\\
+
+\begin{answer*}
+$n > 4034$
+\end{answer*}
+
+\begin{proof}
+First, we should note that there are some starting positions for which Eric can never win, if the squid starts first. For example, if Eric is right next to the squid, then he can just get covered entirely by black squares in 6 moves. In general, if we have a coordinate system with origin at the squid's starting position, with Eric's coordinates $x$, $y$, then they must be such that:
+
+$x$ $+$ $y$ $>$ $2013$, otherwise Eric can always be covered in the first turn.
+
+Now, assuming that it isn't possible for that to happen, then we change the origin of the coordinate system to the squid's most recent position. Say $x + y = 2014$, then if $n < 2013$, then the squid can cover Eric in the very next turn. Hence, $n > 2013$. Now we try to get a strategy for which Eric wins. The sum of Eric's coordinates should be greater than $2013$ after any squid-move for the squid to avoid defeat. On any move in which the squid cannot win directly, it must focus on getting away. If initially $x + y = 2014$, then after the squid's move, $x + y < 4035$. If $n > 4034$, the squid can always be caught in the next move. If $n < 4034$, the squid can always get away/win. Hence, $n > 4034$. Our answer is all $n$ greater than $4034$.
+\end{proof}
+
+
+\end{document}

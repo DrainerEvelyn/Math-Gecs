@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 11}
+\author{Math Gecs}
+\date{April 7, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Let $p(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_1x+a_0$, where the coefficients $ a_i$ are integers. If $p(0)$ and $p(1)$ are both odd, show that $p(x)$ has no integral roots.\\
+
+1971 Canadian MO Problem 5
+
+
+\begin{solution*}
+Inputting $0$ and $1$ into $p(x)$, we obtain
+
+$$p(0)=a_0$$
+
+and
+
+$$p(1)=a_0+a_1+a_2+\cdots+a_n$$
+
+The problem statement tells us that these are both odd. We will keep this in mind as we begin our proof by contradiction.
+
+Suppose for the sake of contradiction that there exist integer $m$ such that
+
+$$p(m)=0$$
+
+Substitution gives
+
+$$a_nm^n + a_{n-1}m^{n-1} + \cdots + a_1m+a_0=0$$
+
+By the Integer Root Theorem, $m$ must divide $a_0$. Since $a_0$ is odd, as shown above, $m$ must be odd. We also know that $p(m)$ must be even since it is equal to $0$. From above, we have that $a_0+a_1+a_2+\cdots+a_n$ must be odd. Since we also have that $a_0$ is odd, $a_1+a_2+a_3+\cdots+a_n$ must be even. Thus, there must be an even number of odd $a_i$ for integer $0<i<n+1$. Thus, the sum of all $a_im^i$ must be even. Then for all $a_k$ that are even for integer $0<k<n+1$ we must have the sum of all $a_km^k$ even since every $a_km^k$ is even. In conclusion, we have
+
+$$a_nm^n + a_{n-1}m^{n-1} + \cdots + a_1m$$
+
+even. But since $a_0$ is odd, $p(m)$ must be odd. Thus, it cannot equal $0$ and we have arrived at a contradiction. $Q.E.D.$
+\end{solution*}
+
+
+
+
+
+\subsection*{Exercise 2}
+Let $a,b,c \in \left[ \frac 12, 1 \right]$. Prove that 
+$$2 \leq \frac{ a+b}{1+c} + \frac{ b+c}{1+a} + \frac{ c+a}{1+b} \leq 3$$.\\
+
+Source: 2006 Romanian NMO Problems/Grade 8/Problem 4\\
+
+\begin{answer*}
+$5\le 9\left(1-\frac{2}{a+b+c+3}\right)$
+\end{answer*}
+
+\begin{solution*}
+It is easy to see that the function $f(a,b,c)=\frac{a+b}{c+1}+\frac{b+c}{a+1}+\frac{c+a}{b+1}$ is convex in each of the three variables (since each term is linear or of the form $\frac{p}{x+q}$ for each variable $x$).  Thus, its value is maximized at the endpoints.  Checking the values of $f$ for all possible values of $a,b,c$ such that $a,b,c\in \{\frac{1}{2},1\}$ yields a maximum of $3$ as desired.  
+
+As for the minimum, we have
+
+$$2\le \frac{a+b}{c+1}+\frac{b+c}{a+1}+\frac{c+a}{b+1}$$
+
+$$\Leftrightarrow 5\le \frac{a+b+c+1}{c+1}+\frac{a+b+c+1}{a+1}+\frac{a+b+c+1}{b+1}$$
+
+Applying AM-HM to the right hand side yields
+
+$$9\left(\frac{a+b+c+3}{a+b+c+1}\right)^{-1}\le\frac{a+b+c+1}{c+1}+\frac{a+b+c+1}{a+1}+\frac{a+b+c+1}{b+1}$$
+
+$$\Rightarrow 9\left(1-\frac{2}{a+b+c+3}\right)\le\frac{a+b+c+1}{c+1}+\frac{a+b+c+1}{a+1}+\frac{a+b+c+1}{b+1}$$
+
+Obviously, $\frac{2}{a+b+c+3}$ is maximized when $a,b,c$ are minimized.  That is, when $a=b=c=\frac{1}{2}$.  Thus, we have that 
+
+$$5\le 9\left(1-\frac{2}{a+b+c+3}\right)$$
+\end{solution*}
+
+
+\end{document}

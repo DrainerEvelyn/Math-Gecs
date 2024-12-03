@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem{answer}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 6}
+\author{Math Gecs}
+\date{February 26, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Find all real numbers $x,y,z\geq 1$ satisfying $$\min(\sqrt{x+xyz},\sqrt{y+xyz},\sqrt{z+xyz})=\sqrt{x-1}+\sqrt{y-1}+\sqrt{z-1}.$$\\
+
+Source: 2013 USAJMO Problem 6\\
+
+\begin{solution}
+The key Lemma is:
+$$\sqrt{a-1}+\sqrt{b-1} \le \sqrt{ab}$$ for all $a,b \ge 1$. Equality holds when $(a-1)(b-1)=1$.
+
+This is proven easily.
+$$\sqrt{a-1}+\sqrt{b-1} = \sqrt{a-1}\sqrt{1}+\sqrt{1}\sqrt{b-1} \le \sqrt{(a-1+1)(b-1+1)} = \sqrt{ab}$$ by Cauchy.
+
+Equality then holds when $a-1 =\frac{1}{b-1} \implies (a-1)(b-1) = 1$.
+
+Now assume that $x = \min(x,y,z)$. Now note that, by the Lemma,
+
+$$\sqrt{x-1}+\sqrt{y-1}+\sqrt{z-1} \le \sqrt{x-1} + \sqrt{yz} \le \sqrt{x(yz+1)} = \sqrt{xyz+x}$$
+So equality must hold in order for the condition in the problem statement to be met.
+So $(y-1)(z-1) = 1$ and $(x-1)(yz) = 1$. If we let $z = c$, then we can easily compute that $y = \frac{c}{c-1}, x = \frac{c^2+c-1}{c^2}$.
+Now it remains to check that $x \le y, z$.
+
+But by easy computations, $x = \frac{c^2+c-1}{c^2} \le c = z \Longleftrightarrow (c^2-1)(c-1) \ge 0$, which is obvious.
+Also $x = \frac{c^2+c-1}{c^2} \le \frac{c}{c-1} = y \Longleftrightarrow 2c \ge 1$, which is obvious, since $c \ge 1$.
+
+So all solutions are of the form $\boxed{\left(\frac{c^2+c-1}{c^2}, \frac{c}{c-1}, c\right)}$, and all permutations for $c > 1$.
+
+\textbf{\textit{Remark:}} An alternative proof of the key Lemma is the following:
+By AM-GM, 
+$$(ab-a-b+1)+1 = (a-1)(b-1) + 1 \ge 2\sqrt{(a-1)(b-1)}$$
+$$ab\ge (a-1)+(b-1)+2\sqrt{(a-1)(b-1)}$$
+Now taking the square root of both sides gives the desired. Equality holds when $(a-1)(b-1) = 1$.
+
+\end{solution}
+
+\begin{solution}
+
+WLOG,  assume that $x = \min(x,y,z)$. Let $a=\sqrt{x-1},$ $b=\sqrt{y-1}$ and $c=\sqrt{z-1}$. Then $x=a^2+1$, $y=b^2+1$ and $z=c^2+1$. The equation becomes
+$$(a^2+1)+(a^2+1)(b^2+1)(c^2+1)=(a+b+c)^2.$$
+Rearranging the terms, we have 
+$$(1+a^2)(bc-1)^2+[a(b+c)-1]^2=0.$$
+Therefore $bc=1$ and $a(b+c)=1.$ Express $a$ and $b$ in terms of $c$, we have $a=\frac{c}{c^2+1}$ and $b=\frac{1}{c}.$ Easy to check that $a$ is the smallest among $a$, $b$ and $c.$ Then $x=\frac{c^4+3c^2+1}{(c^2+1)^2}$, $y=\frac{c^2+1}{c^2}$ and $z=c^2+1.$
+Let $c^2=t$, we have the solutions for $(x,y,z)$ as follows:
+$(\frac{t^2+3t+1}{(t+1)^2}, \frac{t+1}{t}, t+1)$ and permutations for all $t>0.$ 
+
+\end{solution}
+
+\vspace{5in}
+
+
+
+
+
+
+\subsection*{Exercise 2}
+Suppose $P(x)$ is a polynomial with real coefficients, satisfying the condition $P(\cos \theta+\sin \theta)=P(\cos \theta-\sin \theta)$, for every real $\theta$. Prove that $P(x)$ can be expressed in the form$$P(x)=a_0+a_1(1-x^2)^2+a_2(1-x^2)^4+\dots+a_n(1-x^2)^{2n}$$for some real numbers $a_0, a_1, \dots, a_n$ and non-negative integer $n$.\\
+
+Source: 2020 INMO Problem 2 \\
+
+\begin{solution*}
+Assume to the contrary. Suppose $P$ satisfies $P(\cos \theta + \sin \theta)=P(\cos \theta - \sin \theta)$ for all real $\theta$, and is of minimal degree and not of the prescribed form.
+\\ \\
+$\textbf{Claim:}$ For some $c \in \mathbb{R}$, we have $(1-x^2)^2 \mid P(x)-c$. 
+\\ \\
+$\emph{Proof.}$ Note that $\theta=\frac{\pi}{2} \implies P(1)=P(-1)$. Set $c=P(1)$. Then $(1-x^2) \mid P(x)-c$ as the latter vanishes at both $\pm 1$. Now let $P(x)-c=(1-x^2)Q(x)$ for some $Q \in \mathbb{R}[x]$. 
+\\ \\
+Then $Q(\cos \theta+\sin \theta)=-Q(\cos \theta-\sin \theta)$ holds for all $\theta$, by plugging $P(x)=(1-x^2)Q(x)$ in the original equation, since we have the identities $1-(\cos \theta + \sin \theta)^2=-\sin 2\theta$ and $1-(\cos \theta - \sin \theta)^2=\sin 2\theta$. 
+\\ \\
+(Subtlety for beginners: while the equation in $Q$ only holds for $\theta$ away from roots of $\sin 2\theta=0$, since these form a discrete subset of $\mathbb{R}$, the equation extends to these as $Q$ is continuous.)
+\\ \\
+In particular, plugging $\theta=0, \pi$ we get $Q(1)=-Q(1)$ and $Q(-1)=-Q(-1)$ so $Q(\pm 1)=0$, hence $(1-x^2) \mid Q(x)$. Thus, $(1-x^2)^2 \mid P(x)-c$ as desired.
+\\ \\
+Finally, we see that $P(x)=c+(1-x^2)^2h(x)$ and $\text{deg} h<\text{deg} P$ so $h$ has the prescribed form. But then $P$ also has the prescribed form, and our result follows.
+\end{solution*}
+
+
+\end{document}
