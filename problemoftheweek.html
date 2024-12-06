@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathGecs - Problem of the Week</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #282c34;
+      color: #fff;
+      padding: 1.5rem 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      width: 85%;
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+
+    .latest-problem {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .latest-problem h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #282c34;
+    }
+
+    .latest-problem p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .archive {
+      margin-top: 2rem;
+    }
+
+    .archive h3 {
+      font-size: 1.25rem;
+      color: #282c34;
+      margin-bottom: 1rem;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .archive-card {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .archive-card a {
+      text-decoration: none;
+      color: #4CAF50;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .archive-card a:hover {
+      color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MathGecs: Problem of the Week</h1>
+</header>
+
+<div class="container">
+
+  <!-- Latest Problem Section -->
+  <div class="latest-problem">
+    <h2>Math Gecs - Weekly Homework 39</h2>
+    <p>
+      Challenge yourself with the latest problem from Math Gecs! This week's homework focuses on advanced problem-solving techniques.
+    </p>
+    <a href="https://raw.githubusercontent.com/zarabeth-yumie/Math-Gecs/main/Week_39.pdf" target="_blank" class="button">Download Homework 39 (PDF)</a>
+  </div>
+
+  <!-- Archive Section -->
+  <div class="archive">
+    <h3>Past Homework Sets</h3>
+    <div class="archive-grid">
+      <!-- Loop for Homework 1 to 38 -->
+      <script>
+        const archiveGrid = document.querySelector('.archive-grid');
+        for (let i = 38; i >= 1; i--) {
+          const weekNumber = i;
+          const card = document.createElement('div');
+          card.className = 'archive-card';
+
+          const link = document.createElement('a');
+          link.href = `https://raw.githubusercontent.com/zarabeth-yumie/Math-Gecs/main/Week_${weekNumber}.pdf`;
+          link.target = "_blank";
+          link.textContent = `Weekly Homework ${weekNumber}`;
+
+          card.appendChild(link);
+          archiveGrid.appendChild(card);
+        }
+      </script>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
