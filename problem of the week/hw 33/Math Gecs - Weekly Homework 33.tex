@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 33}
+\author{Math Gecs}
+\date{October 20, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Let $\gamma$ be circle and let $P$ be a point outside $\gamma$. Let $PA$ and $PB$ be the tangents from $P$ to $\gamma$ (where $A, B \in \gamma$). A line passing through $P$ intersects $\gamma$ at points $Q$ and $R$. Let $S$ be a point on $\gamma$ such that $BS \parallel QR$. Prove that $SA$ bisects $QR$.\\
+
+Source: 2000 Pan African MO Problem 5\\
+
+\begin{solution*}
+There is a projective transformation which maps $\gamma$ to a circle and that maps the midpoint of $QR$ to its center (EXPAND); therefore, we may assume without loss of generality that the midpoint of $QR$ is the center of $\gamma$. But then $B$ is the reflection of $A$ across $QR$, so that $S$ is the antipode of $A$ on $\gamma$, and we are done.
+\end{solution*}
+
+
+\end{document}
