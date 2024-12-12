@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 39}
+\author{Math Gecs}
+\date{December 04, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Let $\frac{x^2+y^2}{x^2-y^2} + \frac{x^2-y^2}{x^2+y^2} = k$. Compute the following expression in terms of $k$:\[E(x,y) = \frac{x^8 + y^8}{x^8-y^8} - \frac{ x^8-y^8}{x^8+y^8}.\]\\
+
+Source: 1997 JBMO Problem 2\\
+
+\begin{solution*}
+To start, we add the two fractions and simplify.\begin{align*} k &= \frac{(x^2+y^2)^2 + (x^2-y^2)^2}{x^4-y^4} \\ &= \frac{2x^4 + 2y^4}{x^4 - y^4}. \end{align*}Dividing both sides by two yields\[\frac{k}{2} = \frac{x^4 + y^4}{x^4 - y^4}.\]That means\begin{align*} \frac{x^4 + y^4}{x^4 - y^4} + \frac{x^4 - y^4}{x^4 + y^4} &= \frac{k}{2} + \frac{2}{k} \\ \frac{(x^4 + y^4)^2 + (x^4 - y^4)^2}{x^8 - y^8} &= \frac{k^2 + 4}{2k} \\ \frac{2x^8 + 2y^8}{x^8 - y^8} &= \frac{k^2 + 4}{2k}. \end{align*}Dividing both sides by two yields\[\frac{x^8 + y^8}{x^8 - y^8} = \frac{k^2 + 4}{4k}.\]That means\begin{align*} \frac{x^8 + y^8}{x^8 - y^8} - \frac{x^8 - y^8}{x^8 + y^8} &= \frac{k^2 + 4}{4k} - \frac{4k}{k^2 + 4} \\ &= \frac{k^4 + 8k^2 + 16 - 16k^2}{4k(k^2 + 4)} \\ &= \frac{k^4 - 8k^2 + 16}{4k(k^2 + 4)} \\ &= \boxed{\frac{(k^2 - 4)^2}{4k(k^2 + 4)}}. \end{align*}
+\end{solution*}
+
+
+\end{document}

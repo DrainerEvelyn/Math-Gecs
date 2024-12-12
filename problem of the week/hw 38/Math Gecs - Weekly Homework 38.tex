@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 38}
+\author{Math Gecs}
+\date{November 26, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+An $m\times n\times p$ rectangular box has half the volume of an $(m + 2)\times(n + 2)\times(p + 2)$ rectangular box, where $m, n,$ and $p$ are integers, and $m\le n\le p.$ What is the largest possible value of $p$?\\
+
+Source: 1998 AIME Problem 14\\
+
+
+\begin{solution*}
+\[2mnp = (m+2)(n+2)(p+2)\]
+Let’s solve for $p$:
+
+\[(2mn)p = p(m+2)(n+2) + 2(m+2)(n+2)\]\[[2mn - (m+2)(n+2)]p = 2(m+2)(n+2)\]\[p = \frac{2(m+2)(n+2)}{mn - 2n - 2m - 4} = \frac{2(m+2)(n+2)}{(m-2)(n-2) - 8}\]
+Clearly, we want to minimize the denominator, so we test $(m-2)(n-2) - 8 = 1 \Longrightarrow (m-2)(n-2) = 9$. The possible pairs of factors of $9$ are $(1,9)(3,3)$. These give $m = 3, n = 11$ and $m = 5, n = 5$ respectively. Substituting into the numerator, we see that the first pair gives $130$, while the second pair gives $98$. We now check that $130$ is optimal, setting $a=m-2$, $b=n-2$ in order to simplify calculations. Since\[0 \le (a-1)(b-1) \implies a+b \le ab+1\]We have\[p = \frac{2(a+4)(b+4)}{ab-8} = \frac{2ab+8(a+b)+32}{ab-8} \le \frac{2ab+8(ab+1)+32}{ab-8} = 10 + \frac{120}{ab-8} \le 130\]Where we see $(m,n)=(3,11)$ gives us our maximum value of $\boxed{130}$.
+
+Note that $0 \le (a-1)(b-1)$ assumes $m,n \ge 3$, but this is clear as $\frac{2m}{m+2} = \frac{(n+2)(p+2)}{np} > 1$ and similarly for $n$.
+\end{solution*}
+
+
+\end{document}

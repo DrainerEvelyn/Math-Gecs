@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 36}
+\author{Math Gecs}
+\date{November 12, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Show that, for all integers $n$, $n^2+2n+12$ is not a multiple of $121$.\\
+
+Source: 1971 Canadian MO Problem 6\\
+
+\begin{answer*}
+type your answer here.
+\end{answer*}
+
+\begin{solution*}
+Notice $n^{2} + 2n + 12 = (n+1)^{2} + 11$. For this expression to be equal to a multiple of 121, $(n+1)^{2} + 11$ would have to equal a number in the form $121x$. Now we have the equation $(n+1)^{2} + 11 = 121x$. Subtracting $11$ from both sides and then factoring out $11$ on the right hand side results in $(n+1)^{2} = 11(11x - 1)$. Now we can say $(n+1) = 11$ and $(n+1) = 11x - 1$. Solving the first equation results in $n=10$. Plugging in $n=10$ in the second equation and solving for $x$, $x = 12/11$. Since $12/11$ *$121$ is clearly not a multiple of 121, $n^{2} + 2n + 12$ can never be a multiple of $121$.
+\end{solution*}
+
+\begin{solution*}
+In order for $121$ to divide $n^{2} + 2n + 12$, $11$ must also divide $n^{2} + 2n + 12$.
+\\ \\
+Plugging in all numbers modulo $11$:
+\\ \\
+$0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,$ or $0, 1, 2, 3, 4, 5, (-5), (-4), (-3), (-2), (-1)$ to make computations easier,
+\\ \\
+reveals that only $10$ satisfy the condition ${n^{2} + 2n + 12} \equiv 0 \pmod{11}$.
+\\ \\
+Plugging $10$ into ${n^{2} + 2n + 12}$ shows that it is not divisible by $121$.
+\\ \\
+Thus, there are no integers $n$ such that $n^{2} + 2n + 12$ is divisible by $121$.
+\end{solution*}
+
+
+\end{document}

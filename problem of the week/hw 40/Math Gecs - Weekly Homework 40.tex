@@ -1,0 +1,43 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 40}
+\author{Math Gecs}
+\date{December 10, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Prove that the fraction $\frac{21n+4}{14n+3}$ is irreducible for every natural number $n$.)\\
+
+Source: 1959 IMO Problem 1\\
+
+\begin{solution*}
+Denoting the greatest common divisor of $a, b$ as $(a,b)$, we use the Euclidean algorithm:
+
+\[(21n+4, 14n+3) = (7n+1, 14n+3) = (7n+1, 1) = 1\]
+Their greatest common divisor is 1, so $\frac{21n+4}{14n+3}$ is irreducible. Q.E.D.
+\end{solution*}
+
+
+
+
+\end{document}

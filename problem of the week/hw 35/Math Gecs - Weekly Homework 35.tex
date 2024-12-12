@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 35}
+\author{Math Gecs}
+\date{November 05, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+In the polynomial $x^4 - 18x^3 + kx^2 + 200x - 1984 = 0$, the product of $2$ of its roots is $- 32$. Find $k$.\\
+
+Source: 1984 USAMO Problem 1\\
+
+\begin{answer*}
+$\boxed{86}$
+\end{answer*}
+
+\begin{solution*}
+Using Vieta's formulas, we have:
+\\ \\
+\begin{align*}a+b+c+d &= 18,\\ ab+ac+ad+bc+bd+cd &= k,\\ abc+abd+acd+bcd &=-200,\\ abcd &=-1984.\\ \end{align*}
+\\ \\
+From the last of these equations, we see that $cd = \frac{abcd}{ab} = \frac{-1984}{-32} = 62$. Thus, the second equation becomes $-32+ac+ad+bc+bd+62=k$, and so $ac+ad+bc+bd=k-30$. The key insight is now to factor the left-hand side as a product of two binomials: $(a+b)(c+d)=k-30$, so that we now only need to determine $a+b$ and $c+d$ rather than all four of $a,b,c,d$.
+\\ \\
+Let $p=a+b$ and $q=c+d$. Plugging our known values for $ab$ and $cd$ into the third Vieta equation, $-200 = abc+abd + acd + bcd = ab(c+d) + cd(a+b)$, we have $-200 = -32(c+d) + 62(a+b) = 62p-32q$. Moreover, the first Vieta equation, $a+b+c+d=18$, gives $p+q=18$. Thus we have two linear equations in $p$ and $q$, which we solve to obtain $p=4$ and $q=14$.
+\\ \\
+Therefore, we have $(\underbrace{a+b}_4)(\underbrace{c+d}_{14}) = k-30$, yielding $k=4\cdot 14+30 = \boxed{86}$.
+\end{solution*}
+
+
+\end{document}

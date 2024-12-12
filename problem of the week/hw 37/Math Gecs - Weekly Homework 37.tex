@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 37}
+\author{Math Gecs}
+\date{November 19, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Choose four numbers by circling exactly one number in each horizontal row, and one number in each vertical column. Compute the product of these four numbers. Explain clearly why the same product results no matter which selection of this type of four numbers you make.
+
+\[\begin{tabular}{|cccc|} \hline 10 & 15 & 35 & 20 \\ 2& 3& 7& 4\\ 8& 12& 28& 16\\ 12& 18& 42& 24\\ \hline \end{tabular}\]\\
+
+Source: 1993 UNCO Math Contest II Problem 7\\
+
+
+\begin{solution*}
+Notice that, within each row, all four numbers are in the same ratio of $2:3:7:4$, and that, within each column, all four numbers are in the same ratio of $5:1:4:6$. If we align the ratio of numbers in the same row horizontally above the table and align the ratio of numbers in the same column vertically to the next of the table, we see that each entry in the table can be found by multiplying its corresponding row "factor" and column "factor".
+\\ \\
+If exactly one number is being taken from each row, then each row "factor" will be used exactly once. In the same way, if exactly one number is taken from each column, then each column "factor" will be used exactly once. Thus, no matter which numbers you choose, you will always end up multiplying all the row factors together, along with all the column factors, meaning your product will always be $2 * 3 * 7 * 4 * 5 * 1 * 4 * 6 = 20,160$. Thus, the product is invariant.
+\end{solution*}
+
+
+
+\end{document}
