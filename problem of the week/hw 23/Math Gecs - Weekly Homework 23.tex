@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 23}
+\author{Math Gecs}
+\date{August 08, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+For each positive integer $n$ let $S_n$ denote the set of positive integers $k$ such that $n^k-1$ is divisible by $2006$. Define the function $P(n)$ by the rule\[P(n):=\begin{cases}\min(s)_{s\in S_n}&\text{if }S_n\neq\emptyset,\\0&\text{otherwise}.\end{cases}\]Let $d$ be the least upper bound of $\{P(1),P(2),P(3),\ldots\}$ and let $m$ be the number of integers $i$ such that $1\leq i\leq 2006$ and $P(i) = d$. Compute the value of $d+m$.\\
+
+Source: 2006 iTest Problems/Problem 34\\
+
+\begin{answer*}
+$688$
+\end{answer*}
+
+\begin{solution*}
+We find that the prime factorization of $2006$ is $2*17*59$.
+\\ \\
+Then we can compute $d = \lambda(2006)$ (where $\lambda$ is the Carmichael function) by Carmichael's theorem: it is $\text{lcm}(\lambda(2), \lambda(17), \lambda(59)) = \text{lcm}(1, 16, 58) = 2^4 * 29 = 464$.
+\\ \\
+As for solving $P(i) = d$, we must have $i$ odd (otherwise it would not be coprime to $2$), and we must also have $i$ be a primitive root modulo $17$ as well as a primitive root modulo $59$. There are $\phi(\phi(17)) = \phi(16) = 8$ primitive roots modulo $17$ (where $\phi$ is the Euler totient function) and $\phi(\phi(59)) = \phi(58) = (2-1)*(29-1) = 28$ primitive roots modulo $59$. Then we have $m = 1 * 8 * 28 = 224$ by the Chinese Remainder Theorem, so our answer is $d + m = 464 + 224 = 688$ and we are done.
+\end{solution*}
+
+
+\end{document}
