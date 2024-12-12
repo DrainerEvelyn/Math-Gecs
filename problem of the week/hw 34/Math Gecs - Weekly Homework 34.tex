@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 34}
+\author{Math Gecs}
+\date{October 28, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Let $ABCD$ be a rhombus with $\angle A = 60^\circ$, and $P$ is the intersection of diagonals $AC$ and $BD$. Let $Q$, $R$, and $S$ are three points on the rhombus' perimeter. If $PQRS$ is also a rhombus, show that exactly one of $Q$, $R$, and $S$ is located on the vertices of rhombus $ABCD$.\\
+
+Source: 2002 Indonesia MO Problem 7\\
+
+
+\begin{solution*}
+Firstly, all rhombi are parallelograms, so that $P$ is the centroid of $ABCD$.
+\\ \\
+Suppose that $Q, R, S$ are all on one side of the rhombus. Then, in order for $PQRS$ to be a parallelogram, $P$ should also be on that side. But this is not so, so this case is impossible.
+\\ \\
+Suppose that $Q, R, S$ are on two sides of the rhombus; then one side is occupied by two of these points (the "majority side") and one side is occupied by only one of these points (the "minority side"). If $R$ is on the minority side, then $PQRS$ is necessarily self-intersecting and thusly not a parallelogram. Thusly, either $Q$ or $S$ is on the minority side; WLOG it is $Q$. Then $\vec{SR}$ is parallel to the majority side, so $\vec{PQ}$ must also be parallel to the majority side, so that $Q$ is the midpoint of the minority side. Then $\vec{PQ} = \vec{SR}$ must be exactly half the length of the majority side.
+\\ \\
+From here, we consider cases. Based on the symmetry of $ABCD$, however, we only need consider two: that where the majority side is $AB$ and the minority side $BC$, and that where the majority side is $AB$ and the minority side $DA$. In the first case, we find that in order to satisfy $PQ = QR$ and $A, R, B$ collinear, we must have $R = B$ or $R$ be outside of the segment $AB$, which is forbidden, so that exactly one vertex of $PQRS$ ($R$) is also a vertex of $ABCD$. In the second case, we find that in order to satisfy $PQ = QR$ and $A, R, B$ collinear, we must have $R = A$ or $R$ be the midpoint of $AB$, so that exactly one vertex of $PQRS$ ($R$ or $S$, respectively) is also a vertex of $ABCD$.
+\\ \\
+Finally, suppose that $Q, R, S$ are on three different sides. WLOG, suppose that $R\in AB$. If one of the other vertices is on $CD$ (WLOG it is $Q$), then $S$ must be outside the parallelogram (since $h_S = h_P - h_Q + h_R = \frac{1}{2} - 1 + 0 = -\frac{1}{2}$, where $h_X$ is the (signed) height of $X$ to $AB$, scaled by the height of $C$). This is impossible, so we know that $Q$ and $S$ must not be on $CD$; WLOG, we have $Q\in DA, S\in BC$. Then the midpoint of $QS$ is on the line halfway between lines $DA$ and $BC$. Since the midpoint of $QS$ and that of $PR$ are the same, $R$ is the midpoint of $AB$. Then, in order to satisfy $PQ = QR$ and $PS = SR$, we must have $Q$ the midpoint of $DA$ and $S = B$, so that exactly one vertex of $PQRS$ (that is, $S$) is also a vertex of $ABCD$.
+\\ \\
+All cases having been considered, we have shown that if $PQRS$ is a rhombus, then exactly one of $Q$, $R$, and $S$ is a vertex of $ABCD$, and we are done.
+\end{solution*}
+
+
+\end{document}
