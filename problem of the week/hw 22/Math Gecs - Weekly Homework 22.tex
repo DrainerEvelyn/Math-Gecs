@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 22}
+\author{Math Gecs}
+\date{June 30, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Determine the remainder obtained when the expression\[2004^{2003^{2002^{2001}}}\]is divided by $1000$.\\
+
+Source: Mock AIME 2 Pre 2005 Problems/Problem 8\\
+
+\begin{solution*}
+We note that $2004^{2003^{2002^{2001}}} \equiv 4^{2003^{2002^{2001}}}\pmod{1000}$. The remainder of the RHS modulo $8$ is trivially zero, but the remainder of the RHS modulo $125$ depends on the remainder of the exponent modulo $\phi(125) = 50$, so we defer the calculation until later.
+\\ \\
+We compute $2003^{2002^{2001}}$ modulo $50$; again noting that this is equivalent to $3^{2002^{2001}}$ modulo $50$. The remainder is trivially one modulo two, but the remainder modulo $25$ depends on the remainder of the second exponent modulo $\phi(25) = 20$.
+\\ \\
+Now we start to unroll the recursion: We have $2002^{2001} \equiv 2^{2001} \pmod{20}$. Modulo four, the remainder is trivially zero; modulo five, the remainder is $2^{2001\pmod{5}} \equiv 2^1 \equiv 2\pmod{5}$, so we have $2002^{2001} \equiv 12\pmod{20}$.
+\\ \\
+Then $2003^{2002^{2001}} \equiv 3^{12} \equiv 16 \pmod{25}$, so that $2003^{2002^{2001}} \equiv 41\pmod{50}$ by CRT.
+\\ \\
+Then $2004^{2003^{2002^{2001}}} \equiv 4^{41} \equiv 78\pmod{125}$, so that $2004^{2003^{2002^{2001}}} \equiv 704 \pmod{1000}$ by CRT, and we are done.
+\end{solution*}
+
+
+\end{document}
