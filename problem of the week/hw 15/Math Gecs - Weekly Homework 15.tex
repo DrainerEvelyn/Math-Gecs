@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 15}
+\author{Math Gecs}
+\date{May 07, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+For each positive integer $n$, let $S(n)$ be the number of sequences of length $n$ consisting solely of the letters $A$ and $B$, with no more than three $A$s in a row and no more than three $B$s in a row. What is the remainder when $S(2015)$ is divided by $12$?
+\\ \\
+Source: 2015 AMC 12A Problem 22
+
+\begin{answer*}
+$\boxed {8}$
+\end{answer*}
+
+\begin{solution*}
+We can start off by finding patterns in $S(n)$. When we calculate a few values we realize either from performing the calculation or because the calculation was performed in the exact same way that $S(n) = 2^n - 2((n_4)- (n_5) \dots (n_n))$. Rearranging the expression we realize that the terms aside from $2^{2015}$ are congruent to $0$ mod $12$(Just put the equation in terms of $2^{2015}$ and the four combinations excluded and calculate the combinations mod $12$). Using patterns we can see that $2^{2015}$ is congruent to $8$ mod $12$. Therefore $\boxed {8}$ is our answer. ~Very minor edit in LaTeX by get-rickrolled
+\end{solution*}
+
+
+
+
+
+
+\end{document}
