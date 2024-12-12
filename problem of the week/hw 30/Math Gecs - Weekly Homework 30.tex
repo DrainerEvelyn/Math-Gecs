@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 30}
+\author{Math Gecs}
+\date{September 30, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Let $\alpha$ denote $\cos^{-1}(\tfrac 23)$. The recursive sequence $a_0,a_1,a_2,\ldots$ satisfies $a_0 = 1$ and, for all positive integers $n$,\[a_n = \dfrac{\cos(n\alpha) - (a_1a_{n-1} + \cdots + a_{n-1}a_1)}{2a_0}.\]Suppose that the series\[\sum_{k=0}^\infty\dfrac{a_k}{2^k}\]can be expressed uniquely as $\tfrac{p\sqrt q}r$, where $p$ and $r$ are coprime positive integers and $q$ is not divisible by the square of any prime. Find the value of $p+q+r$.\\
+
+Source: 2006 iTest Problem 36\\
+
+\begin{answer*}
+$\boxed{23}$
+\end{answer*}
+
+\begin{solution*}
+We write $\sum_{k=0}^n a_k a_{n-k} = \cos(n\alpha)$ by rearranging the defining equation and using $a_0 = 1$. Summing this with weights $\frac{1}{2^n}$ from zero to infinity, we get $\sum_{n=0}^{\infty}\frac{1}{2^n}\sum_{n}^{k=0} a_k a_{n-k} = \sum_{n=0}^{\infty} \frac{\cos(n\alpha)}{2^n}$. We can rewrite this as $(\sum_{n=0}^{\infty} \frac{a_n}{2^n})^2 = \sum_{n=0}^{\infty} \frac{\cos(n\alpha)}{2^n}$.
+\\ \\
+Next, we compute$\sum_{n=0}^{\infty} \frac{\cos(n\alpha)}{2^n} = \frac{1}{2}(\sum_{n=0}^{\infty} \frac{e^{in\alpha}}{2^n} + \sum_{n=0}^{\infty} \frac{e^{-in\alpha}}{2^n}) = \frac{1}{2}(\frac{1}{1-\frac{e^{i\alpha}}{2}} + \frac{1}{1-\frac{e^{-i\alpha}}{2}})$, which simplifies to $\frac{1 - \frac{e^{i\alpha} + e^{-i\alpha}}{4}}{\frac{5}{4} - \frac{e^{i\alpha} + e^{-i\alpha}}{2}}$. Since $\frac{e^{i\alpha} + e^{-i\alpha}}{2} = \cos\alpha = \frac{2}{3}$, the entire expression becomes $\frac{1 - \frac{1}{2}\cdot\frac{2}{3}}{\frac{5}{4} - \frac{2}{3}} = \frac{\frac{2}{3}}{\frac{7}{12}} = \frac{8}{7}$.
+\\ \\
+Taking square roots, we get $\sum_{n=0}^{\infty} \frac{a_n}{2^n} = \sqrt{\frac{8}{7}} = \frac{2\sqrt{14}}{7}$, so our answer is $2 + 14 + 7 = \boxed{23}$ and we are done.
+\end{solution*}
+
+\end{document}

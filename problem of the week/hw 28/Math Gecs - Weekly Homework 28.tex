@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 28}
+\author{Math Gecs}
+\date{September 15, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+$\alpha$, $\beta$, and $\gamma$ are the roots of $x(x-200)(4x+1) = 1$. Let\[\omega = \tan^{-1}(\alpha) + \tan^{-1}(\beta) + \tan^{-1} (\gamma).\]The value of $\tan(\omega)$ can be written as $\tfrac{m}{n}$ where $m$ and $n$ are relatively prime positive integers. Determine the value of $m+n$.\\
+
+Source: Mock AIME 2 Pre 2005 Problem 11\\
+
+\begin{answer*}
+$\boxed{167}$
+\end{answer*}
+
+\begin{solution*}
+We know that $\alpha, \beta, \gamma$ are the roots of $x(x-200)(x+1/4)-1/4 = x^3 - \frac{799}{4}x^2 - 50x - \frac{1}{4}$. By Vieta's formulas, we have:
+
+$\alpha + \beta + \gamma = \frac{799}{4}$
+
+$\alpha\beta + \beta\gamma + \gamma\alpha = -50$
+
+$\alpha\beta\gamma = \frac{1}{4}$
+
+Now, by tangent addition formulas, we have $\tan(\omega) = \frac{\alpha + \beta + \gamma - \alpha\beta\gamma}{1 - \alpha\beta - \beta\gamma - \gamma\alpha}$. Substituting Vieta's formulas, we obtain $\tan(\omega) = \frac{\frac{799}{4} - \frac{1}{4}}{1 - (-50)} = \frac{\frac{798}{4}}{51} = \frac{133}{34}$. Therefore, our answer is $133 + 34 = \boxed{167}$ and we are done.
+\end{solution*}
+
+
+\end{document}

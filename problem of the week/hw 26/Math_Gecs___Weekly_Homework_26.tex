@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 26}
+\author{Math Gecs}
+\date{August 30, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Five people are gathered in a meeting. Some pairs of people shakes hands. An ordered triple of people $(A,B,C)$ is a trio if one of the following is true:
+\\ \\
+A shakes hands with B, and B shakes hands with C, or A doesn't shake hands with B, and B doesn't shake hands with C. If we consider $(A,B,C)$ and $(C,B,A)$ as the same trio, find the minimum possible number of trios.\\
+
+Source: 2017 Indonesia MO Problem 2\\
+
+\begin{solution*}
+Note that the number of trios that $\{A, B, C\}$ constitute (including permutations) is one, plus two if all three shake hands with each other or all three do not shake hands with each other. However, we can arrange for no triple of people to all shake hands or all not shake hands (the minimum possible "extras"), by numbering the people by integers modulo $5$ and forcing $x$ to shake hands with $x + 1$ for all $x$, and that only. Then there are $\binom{5}{3} = 10$ triples overall, the minimum possible, and we are done.
+\end{solution*}
+
+
+
+\end{document}

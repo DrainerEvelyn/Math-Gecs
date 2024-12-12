@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 29}
+\author{Math Gecs}
+\date{September 22, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Compute the $\textit{number}$ of ordered quadruples $(w,x,y,z)$ of complex numbers (not necessarily nonreal) such that the following system is satisfied:\begin{align*} wxyz&=1\\ wxy^2 + wx^2z + w^2yz + xyz^2&=2\\ wx^2y + w^2y^2 + w^2xz + xy^2z + x^2z^2 + ywz^2 &= -3\\ w^2xy + x^2yz + wy^2z + wxz^2 &= -1 \end{align*}\\
+
+Source: 2006 iTest Problem 35\\
+
+
+\begin{solution*}
+as we are given $xyzw=1$ , so from this we get second equation as $\frac{y}{z}+\frac{x}{y}+\frac{w}{x}+\frac{z}{w}=2$. so say $a=\frac{y}{z} , b=\frac{x}{y}, \frac{w}{x}=c,\frac{z}{w}=d$. so we get $a+b+c+d=2$. from fourth equation we get $\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}=-1$. so we get $abc+abd+acd+bcd=-1$. also from third equation we get $ab+bc+cd+ad+w^2y^2+x^2z^2=-3$. notice we want $ac$ and $bd$. so $ac=\frac{1}{x^2z^2}$. so this gives $ab+bc+cd+ad+ac+bd=-3$. and $abcd=1$. so we get a equation $\alpha^{4}-2\alpha^{3}-3\alpha^2+\alpha+1=0$ whose roots are $a,b,c,d$. so we get $(\alpha+1)(\alpha^3-3\alpha^2+1)=0$. this gives $\alpha=-1$. and three distinct complex ( not necessarily non real) solutions. so as $\alpha=-$1. we get any one pair say $\frac{x}{y}=-1$. so $x=-y=k$ for some $k \in \mathbb{C}$. so as $z,w$, will be distinct we will get $4$ quadruples from $-k,k,w,z$ solution so we can have such $4 \cdot 4 =\boxed{16}$ quadruples.
+\end{solution*}
+
+
+
+\end{document}

@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 27}
+\author{Math Gecs}
+\date{September 07, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Let $S$ be a square with the side length 20 and let $M$ be the set of points formed with the vertices of $S$ and another 1999 points lying inside $S$. Prove that there exists a triangle with vertices in $M$ and with area at most equal with $\frac 1{10}$.\\
+
+Source: 1999 JBMO Problem 3\\
+
+
+\begin{solution*}
+Triangulate $S$ into triangles with vertices being the vertices of $S$ and the members of $M$. There are $2*(1999 + 1) = 4000$ triangles thusly formed, so by the pigeonhole principle, at least one of the holes has to have area at most $\frac{20^2}{4000} = \frac{1}{10}$, and we are done.
+\end{solution*}
+
+\end{document}
