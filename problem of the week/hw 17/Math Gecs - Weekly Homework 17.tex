@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 17}
+\author{Math Gecs}
+\date{May 21, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Let $S$ be the set of all polynomials of the form $z^3 + az^2 + bz + c$, where $a$, $b$, and $c$ are integers. Find the number of polynomials in $S$ such that each of its roots $z$ satisfies either $|z| = 20$ or $|z| = 13$.\\
+
+Source: 2013 AIME II Problem 12\\
+
+\begin{answer*}
+ $\boxed{540}$
+\end{answer*}
+
+\begin{solution*}
+Every cubic with real coefficients has to have either three real roots or one real and two nonreal roots which are conjugates. This follows from Vieta's formulas.
+\\ \\
+Case 1: $f(z)=(z-r)(z-\omega)(z-\omega^*)$, where $r\in \mathbb{R}$, $\omega$ is nonreal, and $\omega^*$ is the complex conjugate of omega (note that we may assume that $\Im(\omega)>0$).
+The real root $r$ must be one of $-20$, $20$, $-13$, or $13$. By Viète's formulas, $a=-(r+\omega+\omega^*)$, $b=|\omega|^2+r(\omega+\omega^*)$, and $c=-r|\omega|^2$. But $\omega+\omega^*=2\Re{(\omega)}$ (i.e., adding the conjugates cancels the imaginary part). Therefore, to make $a$ an integer, $2\Re{(\omega)}$ must be an integer. Conversely, if $\omega+\omega^*=2\Re{(\omega)}$ is an integer, then $a,b,$ and $c$ are clearly integers. Therefore $2\Re{(\omega)}\in \mathbb{Z}$ is equivalent to the desired property. Let $\omega=\alpha+i\beta$.
+\\ \\
+Subcase 1.1: $|\omega|=20$.
+In this case, $\omega$ lies on a circle of radius $20$ in the complex plane. As $\omega$ is nonreal, we see that $\beta\ne 0$. Hence $-20<\Re{(\omega)}< 20$, or rather $-40<2\Re{(\omega)}< 40$. We count $79$ integers in this interval, each of which corresponds to a unique complex number on the circle of radius $20$ with positive imaginary part.
+\\ \\
+Subcase 1.2: $|\omega|=13$.
+In this case, $\omega$ lies on a circle of radius $13$ in the complex plane. As $\omega$ is nonreal, we see that $\beta\ne 0$. Hence $-13<\Re{(\omega)}< 13$, or rather $-26<2\Re{(\omega)}< 26$. We count $51$ integers in this interval, each of which corresponds to a unique complex number on the circle of radius $13$ with positive imaginary part.
+\\ \\
+Therefore, there are $79+51=130$ choices for $\omega$. We also have $4$ choices for $r$, hence there are $4\cdot 130=520$ total polynomials in this case.
+
+Case 2: $f(z)=(z-r_1)(z-r_2)(z-r_3)$, where $r_1,r_2,r_3$ are all real.
+In this case, there are four possible real roots, namely $\pm 13, \pm20$. Let $p$ be the number of times that $13$ appears among $r_1,r_2,r_3$, and define $q,r,s$ similarly for $-13,20$, and $-20$, respectively. Then $p+q+r+s=3$ because there are three roots. We wish to find the number of ways to choose nonnegative integers $p,q,r,s$ that satisfy that equation. By balls and urns, these can be chosen in $\binom{6}{3}=20$ ways.
+\\ \\
+Therefore, there are a total of $520+20=\boxed{540}$ polynomials with the desired property.
+\end{solution*}
+
+\end{document}
