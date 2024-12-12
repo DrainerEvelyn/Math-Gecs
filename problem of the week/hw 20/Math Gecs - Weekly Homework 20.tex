@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 20}
+\author{Math Gecs}
+\date{June 16, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+There are exactly $K$ positive integers $b$ with $5 \leq b \leq 2024$ such that the base-$b$ integer $2024_b$ is divisible by $16$ (where $16$ is in base ten). What is the sum of the digits of $K$?\\
+
+Source: 2024 AMC 10A Problem 18\\
+
+\begin{answer*}
+$\boxed{20}$
+\end{answer*}
+
+\begin{solution*}
+$2b^3+2b+4\equiv 0\pmod{16}\implies b^3+b+2\equiv 0\pmod 8$, if $b$ even then $b+2\equiv 0\pmod 8\implies b\equiv 6\pmod 8$. If $b$ odd then $b^2\equiv 1\pmod 8\implies b^3+b+2\equiv 2b+2\pmod 8$ so $2b+2\equiv 0\pmod 8\implies b+1\equiv 0\pmod 4\implies b\equiv 3,7\pmod 8$. Now $8\mid 2024$ so $\frac38\cdot 2024=759$ but $3$ is too small so $759 - 1 = 758\implies\boxed{\textbf{(D) }20}$.
+\end{solution*}
+
+\end{document}
