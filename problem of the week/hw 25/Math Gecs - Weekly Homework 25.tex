@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 25}
+\author{Math Gecs}
+\date{August 22, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+Do there exist 16 three digit numbers, using only three different digits in all, so that the all numbers give different residues when divided by 16?\\
+
+Source: 1998 JBMO Problem 4\\
+
+
+\begin{solution*}
+Let the three different digits be $a, b, c$.
+\\ \\
+If $a, b, c$ all have the same parity, then all sixteen numbers will also have the same parity. But then they can only cover at most 8 residues modulo 16, so they cannot have distinct residues by the pigeonhole principle.
+\\ \\
+Suppose that $a, b, c$ do not all have the same parity. If two are even and one is odd, then twelve of the eighteen possible three-digit numbers formed with $a, b, c$ will be even and six will be odd. But this means that there are not enough odd numbers to fill the 8 odd residues modulo 16, so it will not be possible to select 16 three digit numbers with this property in this case.
+\\ \\
+Similarly, if two are odd and one is even, then twelve of the eighteen possible three-digit numbers formed with $a, b, c$ will be odd and six will be even. But this means that there are not enough even numbers to fill the 8 even residues modulo 16, so it will not be possible to select 16 three digit numbers with this property in this case.
+\\ \\
+Therefore, we conclude that it is impossible to select 16 such numbers.
+\end{solution*}
+
+
+\end{document}
