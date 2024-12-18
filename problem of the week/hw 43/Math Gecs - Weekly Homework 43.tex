@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 43}
+\author{Math Gecs}
+\date{December 30, 2024}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+A moving particle starts at the point $(4,4)$ and moves until it hits one of the coordinate axes for the first time. When the particle is at the point $(a,b)$, it moves at random to one of the points $(a-1,b)$, $(a,b-1)$, or $(a-1,b-1)$, each with probability $\frac{1}{3}$, independently of its previous moves. The probability that it will hit the coordinate axes at $(0,0)$ is $\frac{m}{3^n}$, where $m$ and $n$ are positive integers such that $m$ is not divisible by $3$. Find $m + n$.\\
+
+Source: 2019 AIME I Problem 5\\
+
+\begin{solution*}
+One could recursively compute the probabilities of reaching $(0,0)$ as the first axes point from any point $(x,y)$ as\[P(x,y) = \frac{1}{3} P(x-1,y) + \frac{1}{3} P(x,y-1) + \frac{1}{3} P(x-1,y-1)\]for $x,y \geq 1,$ and the base cases are $P(0,0) = 1, P(x,0) = P(y,0) = 0$ for any $x,y$ not equal to zero. We then recursively find $P(4,4) = \frac{245}{2187}$ so the answer is $245 + 7 = \boxed{252}$.
+\end{solution*}
+
+
+\end{document}

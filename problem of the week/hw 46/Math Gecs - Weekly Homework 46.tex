@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 46}
+\author{Math Gecs}
+\date{January 15, 2025}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+(Puerto Rico) There are 10001 students at an university (sic). Somer students join together to form several clubs (a student may belong to different clubs). Some clubs join together to form societies (a club may belong to different societies. There are a total of $\displaystyle k$ societies. Suppose that the following conditions hold:
+(i) Each pair of students are in exactly one club.
+(ii) For each student and each society, the student is in exactly one club of the society.
+(iii) Each club has an odd number of students. In addition, a club with $\displaystyle 2m+1$ students ($\displaystyle m$ a positive integer) is in exactly $\displaystyle m$ societies.
+
+Find all possible values of $\displaystyle k$.\\
+
+Source: 2004 IMO Shortlist Problems/C1
+
+\begin{solution*}
+Replacing the number 10001 with the variable $\displaystyle n$, we will count the number of ordered triples $\displaystyle (a,C,S)$, where $\displaystyle a$ is a student belonging to a club $\displaystyle {} C$, which belongs to a society $\displaystyle S$. We will denote such triples acceptable.
+\\ \\
+Now, for any student $\displaystyle a$ and any society $\displaystyle S$, there is exactly one club which will form an acceptable triple. Thus the number of triples is $\displaystyle nk$.
+\\ \\
+Consider any club $\displaystyle {} C$ with $\displaystyle |C|$ members. It is in $\frac{|C| -1}{2}$ societies, so $\displaystyle {} C$ can form $\frac{|C|(|C|-1}{2}$ acceptable triples. If $\mathcal{C}$ denotes the set of all clubs, then this implies that
+\\ \\
+$nk = \sum_{C \in \mathcal{C}} \frac{|C|(|C|-1)}{2} = \sum_{C \in \mathcal{C}} {|C| \choose 2}$.
+\\ \\
+But since any pair of students belong to exactly one club, it follows that ${n \choose 2} = \sum_{C \in \mathcal{C}} {|C| \choose 2}$, or $\frac{n(n-1)}{2} = nk$. Therefore $k = \frac{n-1}{2}$.
+\\ \\
+Alternate solutions are always welcome. If you have a different, elegant solution to this problem, please add it to this page.
+\end{solution*}
+
+
+\end{document}

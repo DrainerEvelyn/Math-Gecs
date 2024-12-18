@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\newtheorem*{answer*}{Answer}
+\newtheorem*{solution*}{Solution}
+\newtheorem{remark}{Remark}
+
+\title{Weekly Homework 44}
+\author{Math Gecs}
+\date{January 1, 2025}
+
+\begin{document}
+\maketitle
+
+\subsection*{Exercise 1}
+An unfair coin has a $2/3$ probability of turning up heads. If this coin is tossed $50$ times, what is the probability that the total number of heads is even?\\
+$\text{(A) } 25\bigg(\frac{2}{3}\bigg)^{50}\quad \text{(B) } \frac{1}{2}\bigg(1-\frac{1}{3^{50}}\bigg)\quad \text{(C) } \frac{1}{2}\quad \text{(D) } \frac{1}{2}\bigg(1+\frac{1}{3^{50}}\bigg)\quad \text{(E) } \frac{2}{3}$ \\ \\
+Source: 1992 AHSME Problem 29\\
+
+
+\begin{solution*}
+Doing casework on the number of heads (0 heads, 2 heads, 4 heads...), we get the equation\[P=\left(\frac{1}{3} \right)^{50}+\binom{50}{2}\left(\frac{2}{3} \right)^{2}\left(\frac{1}{3} \right)^{48}+\dots+\left(\frac{2}{3} \right)^{50}\]This is essentially the expansion of $\left(\frac{2}{3}+\frac{1}{3} \right)^{50}$ but without the odd power terms. To get rid of the odd power terms in $\left(\frac{2}{3}+\frac{1}{3} \right)^{50}$, we add $\left(\frac{2}{3}-\frac{1}{3} \right)^{50}$ and then divide by $2$ because the even power terms that were not canceled were expressed twice. Thus, we have\[P=\frac{1}{2}\cdot\left(\left(\frac{1}{3}+\frac{2}{3} \right)^{50}+\left(\frac{2}{3}-\frac{1}{3} \right)^{50} \right)\]Or\[\frac{1}{2}\left(1+\left(\frac{1}{3} \right)^{50} \right)\]which is equivalent to answer choice $\fbox{D}$.
+\end{solution*}
+
+
+
+\end{document}
